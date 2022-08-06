@@ -1,0 +1,25 @@
+name: abdobits.com deployment
+
+on:
+  push:
+    branches: [ main ]
+
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: pull the changes
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_PASSWORD }}
+          password: ${{ secrets.SSH_USERNAME }}
+          script: |
+            cd /home/abdelkarim/abdobits.com
+            git pull origin main
+            composer install
+            php artisan migrate
+            php artisan optimize
