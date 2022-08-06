@@ -134,8 +134,8 @@
     <div class="stars3" aria-hidden="true"></div>
     <main class="main">
         <section class="contact">
-            <h1 class="title">ABDOBITS</h1>
-            <h2 class="sub-title">PORTFOLIO is Under Construction</h2>
+            <h1 class="title">ABDOBITS PORTFOLIO</h1>
+            <h2 class="sub-title">Under Construction</h2>
         </section>
     </main>
 </body>
