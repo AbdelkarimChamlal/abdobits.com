@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
+
+Route::get('/resume', function(){
+    $file = Storage::disk('public')->get('resume.pdf');
+    return (new Response($file, 200))->header('Content-Type', 'application/pdf');
+});
+
