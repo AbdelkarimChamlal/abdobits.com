@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,13 @@ Route::get('/', function () {
 });
 
 Route::get('/resume', function(){
-    $file = Storage::disk('public')->get('resume.pdf');
-    return (new Response($file, 200))->header('Content-Type', 'application/pdf');
+    
+    $file= public_path(). "/download/resume.pdf";
+
+    $headers = array(
+        'Content-Type: application/pdf',
+      );
+
+    return Response::download($file, 'abdelkarim-resume.pdf', $headers);
 });
 
