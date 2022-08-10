@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/IMG_6567.PNG"/>
+
     <title>Abdelkarim CHAMLAL | PORTFOLIO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -19,7 +21,7 @@
             background-image: url("/images/wallpaper.webp");
 
         }
-        .container{
+        .container{            
             width: 500px;
             height: 475px;
             position: absolute;
@@ -35,12 +37,21 @@
             -moz-box-shadow: -1px 1px 15px 0px rgba(132,164,191,0.86);
         }
 
-        @media screen and (max-width: 700px){
+        @media screen and (max-width: 600px){
             .container{
-                width: 100%;
-                height: 100%;
-                display: grid;
+                width: fit-content;
+                height:fit-content;
+                display: flex;
+                flex-direction: column;
+                justify-content:space-around;
             }
+
+            .profile_picture img{
+                width: 100px;
+                height: 100px;
+            }
+
+            
         }
 
         .profile_picture img{
@@ -126,5 +137,8 @@
             <a href="https://www.linkedin.com/in/abdelkarimchamlal/" target="_blank"><img src="/icons/linkedin.png"></a>
         </div>
     </div>
+    <script>
+        console.log("I see You are a curious person...");
+    </script>
 </body>
 </html>
