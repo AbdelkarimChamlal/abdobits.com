@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Response;
 
 Route::domain('{sub}.abdobits.com')->group(function () {
     Route::get('/', function ($sub) {
-        return "<h1>Subdomain{$sub}</h1>";
+        return "<h1>Subdomain is {$sub}</h1>";
     });
 });
 
