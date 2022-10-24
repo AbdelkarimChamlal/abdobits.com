@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Response;
 |
 */
 
+
+Route::domain('{sub}.abdobits.com')->group(function () {
+    Route::get('/', function ($sub) {
+        return "<h1>Subdomain{$sub}</h1>";
+    });
+});
+
 Route::get('/', function () {
     return view('main');
 });
@@ -31,3 +38,6 @@ Route::get('/resume', function(){
     return Response::download($file, 'abdelkarim-resume.pdf', $headers);
 });
 
+Route::get('/test', function(){
+    return view('test');
+});

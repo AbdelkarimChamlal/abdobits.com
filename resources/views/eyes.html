@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.js" integrity="sha512-+tu0+vUXyZX+S51npa//IN6znNTLZsBoy8mXn9WzHxfBqYMy6gOzzfTK0VqZf9O171RY9AJviHDokCnvEq8+1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        #canvas-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+</body>
+    <script src="js/Eye.js"></script>
+    <script>
+    let eyes = [];
+
+    function setup(){
+        let canvas = createCanvas(innerWidth, innerHeight);
+        canvas.parent('canvas-container');
+        for(let i = 0; i < 50 ; i++){
+            eyes.push(new Eye(random(0,width),random(0,height),random(40,60),random(10,15)));
+            // shapes.push(new CurveShape(random(0,width),random(0,height),random(0,255),random(0,255),random(10,35),random(-.5,.2)));
+        }
+
+    }
+
+    function draw(){
+        background(0);
+
+        eyes.forEach(eye => {
+            eye.draw();
+        });
+    }
+    </script>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.js" integrity="sha512-+tu0+vUXyZX+S51npa//IN6znNTLZsBoy8mXn9WzHxfBqYMy6gOzzfTK0VqZf9O171RY9AJviHDokCnvEq8+1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        #canvas-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+</body>
+<script src="js/Shape.js"></script>
+<script>
+let shapes = [];
+
+function createShapes(n, minPoints, maxPoint){
+    for(let i = 0; i < n; i++){
+
+
+        let rp1 = Math.random() * innerWidth; // random position on the x axis
+        let rp2 = Math.random() * innerHeight; // random position on the y axis
+        let rp3 = Math.random() * 100; // random radius
+
+
+        let points = [];
+        let nPoints = Math.floor(Math.random() * (maxPoint - minPoints + 1)) + minPoints;
+        for(let j = 0; j < nPoints; j++){
+            let x = map(Math.random(), 0, 1, -rp3, rp3);
+            let y = map(Math.random(), 0, 1, -rp3, rp3);
+            points.push({x, y});
+        }
+        shapes.push(new Shape(rp1, rp2, Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), points, PI, rp3, 0.01, 1000, 0, 0, 0));
+    }
+}
+
+function setup(){
+    let canvas = createCanvas(innerWidth, innerHeight, WEBGL);
+    canvas.parent('canvas-container');
+    createShapes(17, 15, 25);
+    // perspective(0, 1, 1, 4);
+
+}
+
+function draw(){
+    background(255);
+    // translate(width / 2, height / 2);
+    // orbitControl();
+    // normalMaterial();
+    // rotateX(-0.3);
+    // rotateY(-0.2);
+    // translate(0, 0, -50);
+    shapes.forEach(shape => {
+        shape.draw();
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//     let pos = 0;
+//     let inc = 0.05;
+//     let spacing = 1000;
+//     let startTime;
+
+//     let r = 50;
+//     let rLimit = 80;
+//     let xStart = ()=>{
+//         return -r;
+//     }
+
+//     let yStart = ()=>{
+//         return -r;
+//     }
+
+//     let xEnd = ()=>{
+//         return r;
+//     }
+
+//     let yEnd = ()=>{
+//         return r;
+//     }
+
+//     let imgR = 50;
+
+//     let rInc = ()=>{
+//         if(r <= rLimit){
+//             imgR = r;
+//             r += .5;
+//         }
+//     }
+
+
+//     let shape = {
+//         points: [],
+//         xoff: 0,
+//         inc: 0.05,
+//         spacing: 1000,
+//         r: 50,
+//         rLimit: 80,
+//         angle: 0,
+//         angleInc: 0.01,
+//     }
+
+//     let delta = 25;
+//     let angle = 0;
+//     let profile;
+//     function setup(){
+//         let canvas = createCanvas(innerWidth, innerHeight);
+//         canvas.parent('canvas-container');
+//         startTime = window.performance.timing.navigationStart;
+//         console.log(startTime);
+//         profile = loadImage('crazy.PNG');
+
+//     }
+
+//     function spacedNoise(n){
+//         return map(noise(pos + n * spacing), 0, 1, -delta, delta);
+//     }
+
+//     function draw(){
+//         // background("#15f4ee");
+//         fill("#4b1223");
+//         stroke("#cacaca");
+//         // noStroke();
+//         push();
+//         translate((width / 2) - map(noise(angle + spacing * 3.8), 0,1, -200,200), (height / 2) - map(noise(angle + spacing * 0.8), 0,1, -300,300));
+//         rotate(map(noise(angle), 0, 1, -PI, PI));
+
+//         beginShape();
+
+//         curveTightness(-.25);
+
+//         curveVertex(xStart() + spacedNoise(1) , yStart() + spacedNoise(2));
+//         curveVertex(xStart() + spacedNoise(3) +(xEnd() - xStart()) / 2 , yStart() + spacedNoise(4));
+//         curveVertex(xEnd() + spacedNoise(5), yStart() + spacedNoise(6));
+//         curveVertex(xEnd() + spacedNoise(7), yStart() + spacedNoise(8) + (yEnd() - yStart()) / 2);
+//         curveVertex(xEnd() + spacedNoise(9), yEnd() + spacedNoise(10));
+//         curveVertex(xStart() + spacedNoise(11) + (xEnd() - xStart()) / 2, yEnd() + spacedNoise(12));
+//         curveVertex(xStart() + spacedNoise(13), yEnd() + spacedNoise(14));
+//         curveVertex(xStart() + spacedNoise(15), yStart() + spacedNoise(16) + (yEnd() - yStart()) / 2);
+
+//         curveVertex(xStart() + spacedNoise(1) , yStart() + spacedNoise(2));
+//         curveVertex(xStart() + spacedNoise(3) +(xEnd() - xStart()) / 2 , yStart() + spacedNoise(4));
+//         curveVertex(xEnd() + spacedNoise(5), yStart() + spacedNoise(6));
+
+
+//         endShape();
+//         pop();
+//         translate(width / 2, height / 2);
+//         pos += inc;
+//         angle += 0.005;
+//         rInc();
+//         console.log(r);
+//         // fill("#868686");
+//         // textAlign(CENTER, CENTER);
+
+//         // text('Loading...', -50, 250, 100, 100);
+//         // textSize(24);
+
+//         // image(profile, -imgR/2, -imgR/2, imgR, imgR);
+
+//     }
+// </script>
+</html>
